@@ -1,0 +1,9 @@
+https://www.youtube.com/watch?v=K7BTtcU0n-Q 
+https://www.geeksforgeeks.org/map-count-function-in-c-stl/
+-basics and implementation, also u will obv do apna college vids aswell
+s.insert(val)
+s.find(val) 
+s.begin()
+s.end() if s.find(val)==s.end() not found s.end() returns a index after last elem
+s.erase(val)
+s.clear()

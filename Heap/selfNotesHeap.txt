@@ -1,0 +1,45 @@
+
+https://youtu.be/ywx-Onrdx4U -vid on heap(max and min heap),insertion and deletion in max heap, heap bottom to up and vice versa
+
+see about heap ds(whats complete bt) and max and min heap,maxheap insert and del node from above
+
+*Define- heap is complete bin tree i.e a bin tree where every parent or root node has must have two child nodes i.e. lift and right child node
+but the last level parent node may or may not have 2 child nodes and the child nodes must be present in first left left then right fasion i.e 
+there cant a parent node that has a no left child but has a right child that wont be considered as a heap
+also the complete bin tree must satisfy either of min heap or max heap characteristics
+
+* for a complete bin tree( also for heap therefore) -
+ if n= no. of nodes then,
+ its height h = log n base 2
+
+*consider this lvl order array for a heap-
+ [50, 40, 45, 30, 20, 35, 10]
+ [0,  1,  2,  3,  4,  5,  6 ] = indexes
+
+         50                 i=0
+       /    \          
+     40      45           i=1  i=2
+    /  \     /  \
+  30    20  35   10   i=3 i=4  i=5  i=6
+
+  for node at index i
+
+  its-
+
+  parent =     (i - 1) / 2;
+
+  left child  = 2 * i + 1;
+  right child = 2 * i + 2;
+
+*Insert node in maxHeap-
+-increase size of array of heap by 1
+-insert new node of heap as array elem after the curr last elem of its array(this is automatically following left to right fashion)
+-heapify (BOTTOM TO TOP METHOD) (parentmust be > child for maxHeap) to make the new complete binary tree a heap
+
+Delete root in maxHeap-
+-Replace root with last element and Decrease size of array of heap by 1
+-heapify (TOP TO BOTTOM METHOD) (parentmust be > child for maxHeap) to make it a valid heap
+
+
+*Heap Sort
+https://www.youtube.com/watch?v=UVW0NfG_YWA&t=250s

@@ -1,0 +1,15 @@
+string reverseWord(string str){
+    
+  //Your code 
+  int start=0;
+  int end= str.length()-1; // sizeof(arr)/sizeof(arr[0]);   ---for int arr
+  
+  while(start < end){
+      
+      swap(str[start],str[end]);
+      start++;
+      end--;
+  }
+  return str;
+  
+}

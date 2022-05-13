@@ -1,0 +1,5 @@
+https://www.tutorialspoint.com/check-if-a-string-contains-a-sub-string-in-cplusplus
+
+if (s1.find(s2) != string::npos) {
+    cout << "found!" ;
+}

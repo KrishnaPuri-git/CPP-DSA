@@ -1,0 +1,42 @@
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        priority_queue<pair<int,int>> que;//creating priority queue using pair to store the value and the index
+        vector<int> ans;//vector to store the result and return in the end
+        if(nums.size()==1&&k==1)//error handling or edge cases
+        {
+            ans.push_back(nums[0]);
+            return ans;
+        }
+        else if(k==nums.size())
+        {
+            for(int i=0;i<nums.size();++i)
+            {
+                que.push(make_pair(nums[i],i));
+            }
+            ans.push_back(que.top().first);
+
+            return ans;
+        }
+        else 
+        {
+            for(int i=0;i<k;++i)//creating maxHeap using first k elements only
+            {
+                que.push(make_pair(nums[i],i));
+            }
+            ans.push_back(que.top().first);
+            for(int i=k;i<nums.size();++i)//then creating maxHeap from the rest of the elements
+            {
+                que.push(make_pair(nums[i],i));//pushing in the priority queue
+                while(que.top().second<=i-k)//if the index of the top is out of bound of the window size then pop
+                {
+                    que.pop();
+                }
+                
+                ans.push_back(que.top().first);
+            }
+        }
+        return ans;
+        
+    }
+};

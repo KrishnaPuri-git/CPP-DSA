@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+	vector<int> topo(int N, vector<int> adj[]) {
+        queue<int> q; 
+	    vector<int> indegree(N, 0); 
+	    for(int i = 0;i<N;i++) {
+	        for(auto it: adj[i]) {
+	            indegree[it]++; 
+	        }
+	    }
+	    // above block stores the indegree of the all the nodes
+
+	    for(int i = 0;i<N;i++) {
+	        if(indegree[i] == 0) { // if indegree of a node = 0 then push it in queue
+	            q.push(i); 
+	        }
+	    }
+
+	    vector<int> topo
+	    while(!q.empty()) {
+	        int node = q.front(); 
+	        q.pop(); // pop the first node from the queue
+	        topo.push_back(node) //and store it in topo vector
+	        for(auto it : adj[node]) {
+	            indegree[it]--; // decrement the  indegree of that node's adj. nodes 
+	            if(indegree[it] == 0) { // and if the degree bcms =0 then push it in queue
+	                q.push(it); 
+	            }
+	        }
+	    }
+	    return topo;
+	}
+};
+
+
+
+int main()
+{
+    
+    int t;
+    cin >> t;
+    while(t--)
+    {
+    	int V, E;
+    	cin >> V >> E;
+
+    	vector<int> adj[V];
+
+    	for(int i = 0; i < E; i++)
+    	{
+    		int u, v;
+    		cin >> u >> v;
+    		adj[u].push_back(v);
+    	}
+
+    	Solution obj;
+    	cout << obj.isCyclic(V, adj) << "\n";
+    }
+
+    return 0;
+}

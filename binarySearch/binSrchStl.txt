@@ -1,0 +1,61 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        //if it was an arr
+        //bool found= binary_search(arr, arr+n, target);
+
+        bool found= binary_search(nums.begin(), nums.end(), target);
+        return found;
+    }
+};
+
+lower_bound function:
+
+a[] = {1,4,5,6,9,9}
+       0 1 2 3 4 5
+
+int ind= lower_bound(a,a+n,4) -a; //1 
+int ind= lower_bound(a,a+n,7) -a; // since 7 is not present so ind= indx of next greater elem(9 here)=4
+int ind=  lower_bound(a,a+n,10) -a; //6
+
+upper_bound function: always returns iterator of next greater elem
+
+a[] = {1,4,5,6,9,9}
+       0 1 2 3 4 5
+
+int ind= upper_bound(a,a+n,4) -a; //2
+int ind= upper_bound(a,a+n,7) -a; //4
+int ind=  upper_bound(a,a+n,10) -a; //6
+
+
+Q- find the first occurance of a X in a sorted array, If it does not exists, print -1.
+
+A[] ={1,4,4,4,4,9,9,10,11}
+int ind = lower_bound(a,a+n,X) -a;
+
+if(ind != n and a[ind] == X) cout<<ind; //if X is not found then ind will point to next greater elem
+else cout<<-1;                          //so check a[ind] == X also edge case a[ind] should not ne a[n]
+
+
+Or
+
+int ind= upper_bound(a,a+n,X) -a;
+ind--; //since upper_bound returns ind of next greater elem
+
+if(ind >= 0 and a[ind] == X) cout<<ind; //make sure ind is not = -1  consider example of 0
+else cout<<-1; 
+
+Q- find the largest no smaller than X in a sorted array, If it does not exists, print -1.
+
+A[] ={1,4,4,4,4,9,9,10,11}
+int ind = lower_bound(a,a+n,X) -a;
+ind--;
+
+if(ind >= 0) cout<<a[ind]; //make sure ind is not = -1  consider example of 0
+else cout<<-1;
+
+similar ques- smallest no. greaterthan X
+
+int ind= upper_bound(a,a+n,X) -a;
+if(ind<n) cout<<a[ind];
+else cout<<-1;

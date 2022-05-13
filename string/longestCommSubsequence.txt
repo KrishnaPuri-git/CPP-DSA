@@ -1,0 +1,32 @@
+https://youtu.be/LAKWWDX3sGw
+class Solution {
+public:
+    int longestCommonSubsequence(string text1, string text2) {
+        
+        int m= text1.size();
+        int n= text2.size();
+        
+        string S1= text1;
+        string S2= text2;
+        
+        int dp[m+1][n+1];
+        int maxLen=0;
+        
+        for(int i=0; i<=m; i++){
+            
+            for(int j=0; j<=n; j++){
+                
+                if(i==0 or j==0)
+                    dp[i][j]=0;
+                
+                else if (S1[i - 1] == S2[j - 1]) {//in longest repeating subsequence in this else if 
+                    dp[i][j] = dp[i-1][j-1] +1; //do this else if (S1[i - 1] == S2[j - 1] and (i!=j))
+                }
+                
+                else
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+        return dp[m][n];        
+    }
+};

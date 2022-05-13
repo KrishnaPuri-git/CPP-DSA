@@ -1,0 +1,27 @@
+https://www.geeksforgeeks.org/minimum-length-subarray-sum-greater-given-value/
+
+int subSum(int arr[], int n, int k){
+
+    int currSum=0;
+    int minLen=INT_MAX;
+
+    int start=0;
+    int end=0;
+
+    while(end<n){
+        
+        while(currSum<=k and end < n){
+            currSum=currSum+arr[end++];
+        }
+
+        while(currSum>k and start<n){
+            
+            if(end-start < minLen){
+                minLen=end-start;
+            }
+            currSum=currSum-arr[start];
+            start++;
+        }
+    }
+    return minLen;
+}
