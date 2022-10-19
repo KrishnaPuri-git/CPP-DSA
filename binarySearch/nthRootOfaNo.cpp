@@ -1,13 +1,6 @@
 //https://youtu.be/WjpswYrS2nY
 #include <bits/stdc++.h>
 using namespace std;
-// double multiply(double number, int n) {
-//     double ans = 1.0;
-//     for(int i = 1;i<=n;i++) {
-//         ans = ans * number;
-//     }
-//     return ans; 
-// }
 
 double getNthRoot(int n, int m) {
     double low = 1;
@@ -24,10 +17,7 @@ double getNthRoot(int n, int m) {
         }
     }
     
-    cout << low << " " << high << endl; 
-    
-    // just to check
-    cout << pow(m, (double)(1.0/(double)n)); 
+    cout <<n<<"th root of "<<m<<" is "<<low<<endl;
 }
 int main() {
 	int n, m;

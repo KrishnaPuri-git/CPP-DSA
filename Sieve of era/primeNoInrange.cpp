@@ -1,31 +1,30 @@
-#include<iostream>
 #include<bits/stdc++.h> 
 using namespace std;
 
 int main(){
 
-    int rng;cout<<"enter range = ";cin>>rng;
-    int arr[rng];
+    int n=50;
 
-    for(int i=0; i<=rng; i++){
+    vector<bool> mark(n+1, true);// intially mark all no.s are prime
+    mark[0]= false, mark[1]= false; // 1 and 0 are not prime
 
-        arr[i]=0;
-    }
+    for(int i=2; i<=n; i++){
 
-    for(int i=2; i<=rng; i++){
+        if(mark[i] == true){ // if a number is marked prime make its all multiples false/ not prime
 
-        for(int j=i*i; j<=rng; j=j+i){
-
-            arr[j]=1;
+            for(int j=2*i ; j<= n; j= i+j)
+                mark[j] = false;
         }
+
     }
 
-    for(int i=2; i<=rng; i++){
+    for(int i=1; i<=50; i++){
 
-        if(arr[i]==0){
+        if(mark[i]== true){
             cout<<i<<" ";
         }
     }
 
 return 0;
+//1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, and 47.
 }

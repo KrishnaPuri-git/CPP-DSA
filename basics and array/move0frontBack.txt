@@ -1,0 +1,37 @@
+//front
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        
+        int j=nums.size()-1;
+        for(int i=j; i>= 0; i--){
+            
+            if(nums[i] !=0){
+                swap(nums[i], nums[j]);
+                j--;
+            }
+        }
+
+    }
+}; 
+
+----------------------------------------------------------------------------------------------
+
+//back
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        
+        int j=0;
+        for(int i=j; i<nums.size(); i++){
+            
+            if(nums[i] !=0){
+                swap(nums[i], nums[j]);
+                j++;
+            }
+        }
+
+    }
+}; 

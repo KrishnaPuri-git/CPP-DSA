@@ -1,31 +1,38 @@
-int median(int matrix [] [], int r, int c){
-        // code here    
-        int min = INT_MAX;
-        int max = INT_MIN;
+
+int Solution::findMedian(vector<vector<int> > &A) {
+    
+    int r=A.size();
+    int c=A[0].size();
+    
+    int desiredCount=((r*c)/2) +1;
+    
+    int mini=INT_MIN;
+    int maxi=INT_MAX;    
+    
+    //finding min and max elem
+    for(int i=0; i<r; i++){
         
-        for(int i=0;i<r;i++)
-        {
-            if(matrix[i][0]<min)  // i,0 bcoz smallest elems are at indx 0 (row wise sorted)
-                min = matrix[i][0];
-            if(matrix[i][c-1]>max) //similarly
-                max = matrix[i][c-1];
+        mini=min(mini,A[i][0]); //1
+        maxi=max(maxi,A[i][c-1]); //9
+    }
+    
+    int mid;//5
+    int currCount=0;
+    //finding a mid val for which we get desiredCount
+    while(mini<maxi){
+        
+        mid=(mini+maxi)/2;
+        currCount=0;
+        for(int i=0; i<r; i++) 
+            currCount += upper_bound(A[i].begin(),A[i].end(),mid)-A[i].begin();//elems smaller than mid
+            
+        if(currCount<desiredCount){//if no of elems smaller than mid< desiredCount, means no itself chota h  
+            mini=mid+1;
         }
         
-        int desired_count = (1+(r*c)/2); //if there are 9 elems (3X3 matrix) then (desired_count=5)  
-        int counter =0; // (no of elems. lesser than = to a no.) should be = (no of elems. greater than = to a no.) to make it a median = 5 here
-        while(min<max)
-        {
-            counter=0;
-            int mid = (max+min)/2;
-            for(int i= 0;i<r;i++)
-            {
-                counter += upper_bound(matrix[i], matrix[i]+c, mid) -  matrix[i]; //elem just greater than mid in each row
-                
-            }
-            if(counter < desired_count) //if counter is (<5 desired hered here) incease min 
-                min = mid+1;
-            else
-                max = mid;
-        }
-    return min;
+        else
+            maxi=mid;
+    }
+    
+    return mini;
 }

@@ -1,6 +1,21 @@
 {
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "mySQLConnection",
+            "database": "bank_details",
+            "username": "root",
+            "password": "6413i3"
+        }
+    ],
     "files.associations": {
         "*.ejs": "html",
-        "functional": "cpp"
+        "iostream": "cpp"
     }
 }

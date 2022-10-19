@@ -8,11 +8,11 @@ int largest(int arr[],int n, int k){
         
         for(int i=0; i<k;  i++){
             
-            minHeap.push(arr[i]);
+            minHeap.push(arr[i]); //0,1,3
         }
         
         for(int i=k; i<n;  i++){
-            
+            //-4>0
             if(arr[i]>minHeap.top()){
                 minHeap.pop();//if top most elem(kth largest elem in priority queue)
                 minHeap.push(arr[i]);//k sabse bade nodes me jo sabse chota h wo top pe hoga
@@ -48,7 +48,8 @@ int smallest(int arr[],int n, int k){
 
 int main(){
 
-    int arr[6]={1,0,3,-4,5,-6};
+    //int arr[6]={1,0,3,-4,5,-6}; // [2,2,3,1]
+    int arr[6]={2,2,3,1};
     int n = sizeof(arr)/sizeof(arr[0]);
 
     cout<<largest(arr, n, 3)<<endl;
